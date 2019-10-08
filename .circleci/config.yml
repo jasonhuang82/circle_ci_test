@@ -36,27 +36,27 @@ jobs:
       branches:
         only:
           - master
-      steps:
-        - checkout
+    steps:
+      - checkout
 
-        # Download and cache dependencies
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "package.json" }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
-        - run: npm install
+      - run: npm install
 
-        - save_cache:
-            paths:
-              - node_modules
-            key: v1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
-        # run tests!
-        - run: npm run test
+      # run tests!
+      - run: npm run test
 
-        - run: pip install awsebcli
+      - run: pip install awsebcli
 
-        - run: eb use env-dev --profile default
-        - run: eb deploy --profile default
+      - run: eb use env-dev --profile default
+      - run: eb deploy --profile default
