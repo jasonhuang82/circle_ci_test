@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@x.y
 jobs:
@@ -39,7 +39,9 @@ jobs:
     
   # build_dev:
   aws-cli-example:
-    executor: aws-cli/default
+    machine: # 虛擬機的環境
+      node:
+        version: 10.16.3 #把剛剛得到的node version填到這裡
     steps:
       - checkout
       - aws-cli/setup:
