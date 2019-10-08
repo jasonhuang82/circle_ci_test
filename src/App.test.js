@@ -1,9 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("First Test", () => {
+  test("nums = 0, expect 0", () => {
+    expect(0).toEqual(0);
+  });
 });
