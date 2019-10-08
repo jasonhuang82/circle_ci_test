@@ -26,9 +26,9 @@ jobs:
       # run tests!
       - run: npm run test
     
-    # build_dev:
-    build_deploy:
-      machine: # 虛擬機的環境
+  # build_dev:
+  build_deploy:
+    machine: # 虛擬機的環境
       node:
         version: 10.16.3 #把剛剛得到的node version填到這裡
       test:
