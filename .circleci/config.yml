@@ -29,7 +29,7 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              pip install awsebcli
-              eb use env-dev --profile circle_ci_test
-              eb deploy --profile circle_ci_test
+              pip install awsebcli --upgrade
+              eb use env-dev $CIRCLE_BRANCH-my-application
+              eb deploy $CIRCLE_BRANCH-my-application
             fi
