@@ -25,3 +25,13 @@ jobs:
 
       # run tests!
       - run: npm run test
+    
+    dependencies:
+      pre:
+        - pip install awsebcli
+    deployment:
+        develop:
+          branch: /^(?!master$).*$/
+          commands:
+            - eb use env-dev --profile default
+            - eb deploy --profile default
