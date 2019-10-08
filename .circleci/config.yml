@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    branches:
+        ignore:
+          - master
     machine: # 虛擬機的環境
       node:
         version: 10.16.3 #把剛剛得到的node version填到這裡
