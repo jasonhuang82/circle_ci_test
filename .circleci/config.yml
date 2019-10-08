@@ -30,6 +30,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               pip install awsebcli
+              aws configure --profile "circle_ci_test"
               aws configure list
               eb use env-dev --profile circle_ci_test
               eb deploy --profile circle_ci_test
