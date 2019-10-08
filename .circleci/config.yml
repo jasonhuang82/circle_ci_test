@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-        ignore:
-          - master
     machine: # 虛擬機的環境
       node:
         version: 10.16.3 #把剛剛得到的node version填到這裡
@@ -41,25 +38,6 @@ jobs:
         - npm test  #每一個deploy到github上的commit都會執行npm test
       
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: npm run test
-
       - run: pip install awsebcli
 
       - run: eb use env-dev --profile default
