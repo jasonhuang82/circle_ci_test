@@ -1,6 +1,4 @@
-version: 2.1
-orbs:
-  aws-cli: circleci/aws-cli@x.y
+version: 2
 jobs:
   build:
     machine: # 虛擬機的環境
@@ -35,22 +33,3 @@ jobs:
               eb use env-dev --profile circle_ci_test
               eb deploy --profile circle_ci_test
             fi
-
-    
-  # build_dev:
-  aws-cli-example:
-    machine: # 虛擬機的環境
-      node:
-        version: 10.16.3 #把剛剛得到的node version填到這裡
-    steps:
-      - checkout
-      - aws-cli/setup:
-          profile-name: circle_ci_test
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
-      - aws-cli-example:
-          context: aws
